@@ -37,7 +37,7 @@ Features:
 ## Option 1 : Without text-messages
 
 ### Instructions (without Twilio)
-1.) Deploy! - Paste this in your terminal (`python [MyWeather.py](https://github.com/luisegarduno/MyWeather/releases/download/1.0/MyWeather.py)`)     
+1.) Deploy! - Paste this in your terminal 'python [MyWeather.py](https://github.com/luisegarduno/MyWeather/releases/download/v1.0/MyWeather.py)'     
 2.) Insert your AccuWeather API Key when prompted to
 
 ## Option 2 : With text-messages
@@ -54,5 +54,5 @@ Features:
 3.) Obtain a phone number via Twilio (2 methods):      
 - Method 1: [Trial](https://www.twilio.com/console/phone-numbers/trial-number/modal?capability[]=sms)    
 - Method 2: [Purchase](https://www.twilio.com/console/phone-numbers/search)     
-4.) Deploy! - Paste this in your terminal (`python [MyWeather.py](https://github.com/luisegarduno/MyWeather/releases/download/1.0/MyWeather.py)`)      
+4.) Deploy! - Paste this in your terminal 'python [MyWeather.py](https://github.com/luisegarduno/MyWeather/releases/download/1.0/MyWeather.py)'      
 5.) Insert your AccuWeather API key +  Twilio crendentials + Phone Numbers when prompted to
