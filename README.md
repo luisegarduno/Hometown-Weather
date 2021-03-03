@@ -37,7 +37,7 @@ Features:
 ## Option 1 : Without text-messages
 
 ### Instructions (without Twilio)
-1.) Deploy! - Paste this in your terminal (`python [MyWeather.py](https://github.com/luisegarduno/MyWeather/releases/download/1.0/MyWeather.py)`)
+1.) Deploy! - Paste this in your terminal (`python [MyWeather.py](https://github.com/luisegarduno/MyWeather/releases/download/1.0/MyWeather.py)`)     
 2.) Insert your AccuWeather API Key when prompted to
 
 ## Option 2 : With text-messages
@@ -49,10 +49,10 @@ Features:
   - Skip to step #4 of instructions if you already have both of these.
 
 ### Instructions w/ Twilio:
-1.) [Sign up](https://www.twilio.com/try-twilio) or [log in](https://www.twilio.com/login) to Twilio.
-2.) After account has been confirmed via email, visit your [console](https://www.twilio.com/console) to find your API crendentials (under `project info`).
-3.) Obtain a phone number via Twilio (2 methods):
-- Method 1: [Trial](https://www.twilio.com/console/phone-numbers/trial-number/modal?capability[]=sms)
-- Method 2: [Purchase](https://www.twilio.com/console/phone-numbers/search)
-4.) Deploy! - Paste this in your terminal (`python [MyWeather.py](https://github.com/luisegarduno/MyWeather/releases/download/1.0/MyWeather.py)`)
+1.) [Sign up](https://www.twilio.com/try-twilio) or [log in](https://www.twilio.com/login) to Twilio.    
+2.) After account has been confirmed via email, visit your [console](https://www.twilio.com/console) to find your API crendentials (under `project info`).    
+3.) Obtain a phone number via Twilio (2 methods):      
+- Method 1: [Trial](https://www.twilio.com/console/phone-numbers/trial-number/modal?capability[]=sms)    
+- Method 2: [Purchase](https://www.twilio.com/console/phone-numbers/search)     
+4.) Deploy! - Paste this in your terminal (`python [MyWeather.py](https://github.com/luisegarduno/MyWeather/releases/download/1.0/MyWeather.py)`)      
 5.) Insert your AccuWeather API key +  Twilio crendentials + Phone Numbers when prompted to
