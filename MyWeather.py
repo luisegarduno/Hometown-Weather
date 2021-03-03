@@ -10,6 +10,7 @@ cwd = os.path.dirname(os.path.realpath(__file__))
 # Boolean flag that tells the program whether the user enabled text notifications
 txt_notifs = True
 
+# Clear terminal screeen
 os.system('cls' if os.name == 'nt' else 'clear')
 
 # Check to see if program has been ran before 
@@ -17,17 +18,18 @@ if os.path.isfile('keys.oof') and os.path.isfile('weather-data.xlsx'):
 
     with open('keys.oof') as file:
         accuweather_api = file.readline()
-
-        line = file.readline()
         line2 = file.readline()
-        if line2 != '':
-            account_sid = line
-            auth_token = line2
+
+        # If 'line3' is empty, this means that there is only two lines in the file
+        line3 = file.readline()
+        if line3 != '':
+            account_sid = line2
+            auth_token = line3
             my_number = file.readline()
             twilio_number = file.readline()
             location_key = file.readline()
         else:
-            location_key = line
+            location_key = line2
             txt_notifs = False
     file.close()
 
@@ -51,7 +53,6 @@ else:
     flag = True
     while flag:
         # Ask user if they would like text message notifications
-        print("*Recommended*")
         txts = str(input("Would you like to enable txt-notifications? (y/n) : "))
         os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -61,6 +62,7 @@ else:
             print("     > [AccuWeather API] : AB1234a12a12a1234567a9a94573a1234a")
             print("     > [Postal/Zip Code] : 12345")
 
+            # Enable Text-Messages: Using Twilio
             if txts[0].lower() == 'y':
                 print("     > [Account SID] : AB1234a12a12a1234567a9a94573a1234a")
                 print("     > [Authentication Token] : AB1234a12a12a1234567a9a94573a1234a")
@@ -101,6 +103,7 @@ else:
                 txt_notifs = True
                 flag = False
 
+            # Disable text-message feature 
             elif txts[0].lower() == 'n':
                 print("** Need help? Check out the README (https://github.com/luisegarduno/MyWeather/blob/main/README.md)\n")
 
@@ -109,7 +112,6 @@ else:
                 creds.write(accuweather_api + "\n")
 
                 import requests as reqs
-
                 search_code = str(input("     > [Postal/Zip Code] : "))
                 params = (('apikey', accuweather_api), ('q', search_code), ('language', 'en-us'), ('details', 'true'))
                 z_res = reqs.get('http://dataservice.accuweather.com/locations/v1/postalcodes/search', params=params)
@@ -125,6 +127,7 @@ else:
         else:
             print("Invalid Option. Try Again (Options: y OR n)")
 
+    # Create Excel file if not already created
     import xlsxwriter
     if os.path.isfile('weather-data.xlsx'):
         print('Continuing...')
@@ -133,21 +136,19 @@ else:
         init_book.close()
 
 # -------------- Launch actual script now --------------- #
-import json
 import openpyxl
 import xlsxwriter
-import subprocess
 import pandas as pd
 import requests as reqs
 from urllib.request import urlopen
 
+# Open Excel file
 weather_data = pd.read_excel('weather-data.xlsx')
 
 os.system('cls' if os.name == 'nt' else 'clear')
 print("*Weather*\n")
 
 params = (('apikey', accuweather_api), ('language', 'en-us'), ('details', 'true'), ('metric', 'false'))
-
 response_1 = reqs.get('http://dataservice.accuweather.com/forecasts/v1/daily/1day/' + str(location_key), params=params)
 resp_dict1 = json.loads(response_1.text)
 
@@ -184,8 +185,8 @@ precipitation = str(precipitation_value) + precipitation_unit
 relative_humidity = str(resp_dict2[0]['RelativeHumidity']) + '%'
 indoor_relative_humidity = resp_dict2[0]['IndoorRelativeHumidity']
 
+# Information that will be printed to console (same to what user will receive via text-message)
 date_rn = time.strftime("%m/%d/%Y")
-
 txt_2_me = 'Date : ' + str(date_rn)
 txt_2_me += '\nLow Temperature : ' + lo
 txt_2_me += '\nHi Temperature : ' + hi
@@ -200,16 +201,11 @@ line = date_rn + ',' + lo + ',' + hi + ',' + precipitation + ',' + relative_humi
 weather_data2 = pd.DataFrame({'Date': [date_rn], 'Low Temperature': [lo], 'High Temperature': [hi], 'Precipitation': [precipitation],
                             'Humidity': [relative_humidity], 'Pressure': [pressure], 'Wind (strength, direction)': [wind]})
 
-
 weather_data = weather_data.append(weather_data2)
 weather_data.to_excel('./weather-data.xlsx', index=False)
 
 if txt_notifs:
     from twilio.rest import Client
-
-
-
-
 
     client = Client(account_sid, auth_token)                    # Twilio Client
     client.messages.create(to=my_number,from_=twilio_number,body=txt_2_me)
