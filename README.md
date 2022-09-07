@@ -10,7 +10,7 @@
     $$/      $$/  $$$$$$$ |$$/      $$/  $$$$$$$/  $$$$$$$/    $$$$/  $$/   $$/  $$$$$$$/ $$/
                  /  \__$$ |
                  $$    $$/                
-                  $$$$$$/                 ~ Website : https://garduno.me
+                  $$$$$$/                 ~ Website : https://gardunos.tech
 
 
 # MyWeather   
