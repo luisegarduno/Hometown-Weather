@@ -15,6 +15,8 @@
 
 # MyWeather   
 
+![Number of GitHub Downloads badge](https://img.shields.io/github/downloads/luisegarduno/MyWeather/total?color=pink&label=GitHub%20Downloads)
+
 MyWeather is a python script that uses the AccuWeather API to retrieve weather data given a specific zip code.     
 
 Features:     
